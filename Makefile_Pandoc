@@ -55,9 +55,11 @@ cabal.sandbox.config: /root/.cabal/packages/hackage.haskell.org
 
 bin/pandoc: cabal.sandbox.config
 	cabal install --disable-documentation pandoc -fembed_data_files 
+	cabal install --disable-documentation pandoc-citeproc -fembed_data_files 
 
 $(TARGET_DIR)bin/pandoc: bin/pandoc
 	mkdir -p $(TARGET_DIR)bin
 	cp bin/pandoc $(TARGET_DIR)bin
+	cp bin/pandoc-citeproc $(TARGET_DIR)bin
 
 all: $(TARGET_DIR)bin/pandoc
